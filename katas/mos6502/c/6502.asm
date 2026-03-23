@@ -1,0 +1,20 @@
+.ORG $0300
+
+START:
+    LDX #$00
+
+LOOP:
+    LDA MESSAGE,X
+
+    BEQ END_PROGRAM
+
+    STA $FD00
+
+    INX
+    JMP LOOP
+
+END_PROGRAM:
+    BRK
+
+MESSAGE:
+    .BYTE "HELLO, WORLD!", $0D, $0A, $00
